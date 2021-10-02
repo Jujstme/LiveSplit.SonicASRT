@@ -1,22 +1,13 @@
-﻿using LiveSplit.Model;
-using LiveSplit.UI.Components;
-using LiveSplit.UI;
-using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Xml;
-using System.Windows.Forms;
-using System.Collections.Generic;
+﻿using System;
 using LiveSplit.ComponentUtil;
-using System.Threading.Tasks;
 
 namespace LiveSplit.SonicASRT
 {
     class GameVariables
     {
-        internal string GameName = "Sonic & All-Stars Racing Transformed";
-        internal string[] ExeName = { "ASN_App_PcDx9_Final" };
-        internal byte refreshRate = 60;
+        internal readonly string GameName = "Sonic & All-Stars Racing Transformed";
+        internal readonly string[] ExeName = { "ASN_App_PcDx9_Final" };
+        internal readonly byte refreshRate = 60;
         internal MemoryWatcherList watchers;
 
         // Internal variables
@@ -32,7 +23,12 @@ namespace LiveSplit.SonicASRT
             var scanner = new SignatureScanner(game, game.MainModule.BaseAddress, game.MainModule.ModuleMemorySize);
             IntPtr ptr;
             vars.watchers = new MemoryWatcherList();
-            
+
+            // Basic checks
+            if (game.Is64Bit()) return false;
+            ptr = scanner.Scan(new SigScanTarget("53 6F 6E 69 63 20 26 20 41 6C 6C 2D 53 74 61 72 73 20 52 61 63 69 6E 67 20 54 72 61 6E 73 66 6F 72 6D 65 64"));
+            if (ptr == IntPtr.Zero) return false;
+
             ptr = scanner.Scan(new SigScanTarget(2,
                 "80 3D ???????? 00", // cmp byte ptr [ASN_App_PcDx9_Final.exe+852918],00  <----
                 "0F85 ????????",     // jne ASN_App_PcDx9_Final.exe+467479
@@ -76,9 +72,9 @@ namespace LiveSplit.SonicASRT
             vars.watchers.Add(new MemoryWatcher<bool>(new DeepPointer((IntPtr)game.ReadValue<int>(ptr))) { Name = "raceCompleted" });
 
             ptr = scanner.Scan(new SigScanTarget(4,
-                "7C 44",      // mov eax,[esp]
-                "83 3D ???????? 00",   // mov [ASN_App_PcDx9_Final.exe+7CE930],eax  <----
-                "74 3B"));    // add esp,08
+                "7C 44",              // jl ASN_App_PcDx9_Final.exe+4D1C5
+                "83 3D ???????? 00",  // cmp dword ptr [ASN_App_PcDx9_Final.exe+7CE944],00  <----
+                "74 3B"));            // je ASN_App_PcDx9_Final.exe+4D1C5
             if (ptr == IntPtr.Zero) return false;
             vars.watchers.Add(new MemoryWatcher<byte>(new DeepPointer((IntPtr)game.ReadValue<int>(ptr))) { Name = "raceStatus" });
 
@@ -96,15 +92,6 @@ namespace LiveSplit.SonicASRT
             if (ptr == IntPtr.Zero) return false;
             vars.watchers.Add(new MemoryWatcher<uint>(new DeepPointer((IntPtr)game.ReadValue<int>(ptr), 0x0)) { Name = "eventType", FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull });
             vars.watchers.Add(new MemoryWatcher<uint>(new DeepPointer((IntPtr)game.ReadValue<int>(ptr) + 4, 0x0)) { Name = "TrackID", FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull });
-            
-            /*
-            ptr = scanner.Scan(new SigScanTarget(2,
-                "8B 0D ????????",   // mov ecx,[ASN_App_PcDx9_Final.exe+7D07A0]  <----
-                "3B CD",            // cmp ecx,ebp
-                "74 06"));          // je ASN_App_PcDx9_Final.exe+30C71E
-            if (ptr == IntPtr.Zero) return false;
-            vars.watchers.Add(new MemoryWatcher<bool>(new DeepPointer((IntPtr)game.ReadValue<int>(ptr), 0xF84)) { Name = "isSclassUnlocked", FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull });
-            */
 
             ptr = scanner.Scan(new SigScanTarget(3,
                 "8B 2C 85 ????????",   // mov ebp,[eax*4+ASN_App_PcDx9_Final.exe+7D01F8]  <----

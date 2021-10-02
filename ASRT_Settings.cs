@@ -1,7 +1,4 @@
-﻿using LiveSplit.Model;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System;
 using System.Windows.Forms;
 using System.Xml;
 

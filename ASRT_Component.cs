@@ -6,9 +6,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Xml;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using LiveSplit.ComponentUtil;
-using System.Threading.Tasks;
 
 namespace LiveSplit.SonicASRT
 {
