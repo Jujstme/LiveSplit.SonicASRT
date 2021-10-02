@@ -235,6 +235,7 @@ namespace LiveSplit.SonicASRT
 
         private void ResetLogic()
         {
+            // Do not implement a reset funcion for this game
             // timer.Reset();
         }
 
