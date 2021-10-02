@@ -14,7 +14,7 @@ namespace LiveSplit.SonicASRT
         public string Description => "Automatic splitting and IGT calculation";
         public ComponentCategory Category => ComponentCategory.Control;
         public string UpdateName => this.ComponentName;
-        public string UpdateURL => "https://raw.githubusercontent.com/Jujstme/Autosplitters/master/LiveSplit.SonicASRT/";
+        public string UpdateURL => "https://raw.githubusercontent.com/Jujstme/LiveSplit.SonicASRT/master/";
         public Version Version => Assembly.GetExecutingAssembly().GetName().Version;
         public string XMLURL => this.UpdateURL + "Components/update.LiveSplit.SonicASRT.xml";
         public IComponent Create(LiveSplitState state)
