@@ -34,14 +34,17 @@ namespace LiveSplit.SonicASRT
 
         private void updateLogic(object sender, EventArgs eventArgs)
         {
-            try
+            if (game == null || game.HasExited)
             {
-                if (!HookGameProcess()) return;
-            }
-            catch
-            {
-                game = null;
-                return;
+                try
+                {
+                    if (!HookGameProcess()) return;
+                }
+                catch
+                {
+                    game = null;
+                    return;
+                }
             }
             UpdateGameMemory();
             Update();

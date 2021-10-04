@@ -3,7 +3,7 @@ using LiveSplit.ComponentUtil;
 
 namespace LiveSplit.SonicASRT
 {
-    class GameVariables
+    internal class GameVariables
     {
         internal readonly string GameName = "Sonic & All-Stars Racing Transformed";
         internal readonly string[] ExeName = { "ASN_App_PcDx9_Final" };
