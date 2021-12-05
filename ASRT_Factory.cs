@@ -1,8 +1,8 @@
-﻿using System.Reflection;
-using LiveSplit.SonicASRT;
-using LiveSplit.UI.Components;
-using System;
+﻿using System;
+using System.Reflection;
 using LiveSplit.Model;
+using LiveSplit.UI.Components;
+using LiveSplit.SonicASRT;
 
 [assembly: ComponentFactory(typeof(SonicASRTFactory))]
 
@@ -17,10 +17,6 @@ namespace LiveSplit.SonicASRT
         public string UpdateURL => "https://raw.githubusercontent.com/Jujstme/LiveSplit.SonicASRT/master/";
         public Version Version => Assembly.GetExecutingAssembly().GetName().Version;
         public string XMLURL => this.UpdateURL + "Components/update.LiveSplit.SonicASRT.xml";
-        public IComponent Create(LiveSplitState state)
-        {
-            return new Component(state);
-        }
-
+        public IComponent Create(LiveSplitState state) { return new SonicASRTComponent(state); }
     }
 }

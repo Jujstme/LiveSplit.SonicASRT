@@ -50,7 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ASRT_SplitLogic.cs" />
+    <Compile Include="Game\SplittingLogic.cs" />
     <Compile Include="ASRT_Component.cs" />
     <Compile Include="ASRT_Factory.cs" />
     <Compile Include="ASRT_Settings.cs">
@@ -59,12 +59,19 @@
     <Compile Include="ASRT_Settings.Designer.cs">
       <DependentUpon>ASRT_Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game\Enums.cs" />
+    <Compile Include="Game\GameMemory.cs" />
+    <Compile Include="Game\Exceptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ASRT_Settings.resx">
       <DependentUpon>ASRT_Settings.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Components\update.LiveSplit.SonicASRT.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

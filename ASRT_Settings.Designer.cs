@@ -117,6 +117,7 @@
             this.chkCurienCurves = new System.Windows.Forms.CheckBox();
             this.chkCarnivalClash = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.chkFatalFinale = new System.Windows.Forms.CheckBox();
             this.chkTokyoTakeover = new System.Windows.Forms.CheckBox();
             this.chkRangerRush = new System.Windows.Forms.CheckBox();
@@ -127,7 +128,6 @@
             this.chkMaracarMadness = new System.Windows.Forms.CheckBox();
             this.chkZombieZoom = new System.Windows.Forms.CheckBox();
             this.chkRapidRuins = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -164,7 +164,10 @@
             // chkIGT
             // 
             this.chkIGT.AutoSize = true;
+            this.chkIGT.Checked = true;
+            this.chkIGT.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIGT.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkIGT.Enabled = false;
             this.chkIGT.Location = new System.Drawing.Point(83, 23);
             this.chkIGT.Name = "chkIGT";
             this.chkIGT.Size = new System.Drawing.Size(110, 17);
@@ -1211,6 +1214,15 @@
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Superstar Showdown";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(259, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(164, 26);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "NOTE: Fatal Finale will split when\r\nreaching the credits (100%).";
+            // 
             // chkFatalFinale
             // 
             this.chkFatalFinale.AutoSize = true;
@@ -1315,15 +1327,6 @@
             this.chkRapidRuins.TabIndex = 47;
             this.chkRapidRuins.Text = "Rapid Ruins";
             this.chkRapidRuins.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(259, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(164, 26);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "NOTE: Fatal Finale will split when\r\nreaching the credits (100%).";
             // 
             // Settings
             // 

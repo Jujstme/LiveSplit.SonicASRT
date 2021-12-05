@@ -98,7 +98,7 @@ namespace LiveSplit.SonicASRT
 
             // General settings
             chkrunStart.DataBindings.Add("Checked", this, "RunStart", false, DataSourceUpdateMode.OnPropertyChanged);
-            chkIGT.DataBindings.Add("Checked", this, "UseIGT", false, DataSourceUpdateMode.OnPropertyChanged);
+            //chkIGT.DataBindings.Add("Checked", this, "UseIGT", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // All Cups
             chkOceanView.DataBindings.Add("Checked", this, "OceanView", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -208,7 +208,7 @@ namespace LiveSplit.SonicASRT
         {
             XmlElement settingsNode = doc.CreateElement("settings");
             settingsNode.AppendChild(ToElement(doc, "RunStart", RunStart));
-            settingsNode.AppendChild(ToElement(doc, "UseIGT", UseIGT));
+            //settingsNode.AppendChild(ToElement(doc, "UseIGT", UseIGT));
             settingsNode.AppendChild(ToElement(doc, "OceanView", OceanView));
             settingsNode.AppendChild(ToElement(doc, "SambaStudios", SambaStudios));
             settingsNode.AppendChild(ToElement(doc, "CarrierZone", CarrierZone));
@@ -294,7 +294,7 @@ namespace LiveSplit.SonicASRT
         public void SetSettings(XmlNode settings)
         {
             RunStart = ParseBool(settings, "RunStart", true);
-            UseIGT = ParseBool(settings, "UseIGT", true);
+            //UseIGT = ParseBool(settings, "UseIGT", true);
             OceanView = ParseBool(settings, "OceanView", true);
             SambaStudios = ParseBool(settings, "SambaStudios", true);
             CarrierZone = ParseBool(settings, "CarrierZone", true);
